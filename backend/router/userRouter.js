@@ -20,7 +20,7 @@ userRouter.post("/register", async (req, res) => {
           await newUser.save();
           res
             .status(200)
-            .json({ msg: "You are successfully ceated your Account" });
+            .json({ msg: "You are successfully ceated your Account",newUser });
         }
       });
     } else {
@@ -70,6 +70,19 @@ userRouter.get("/logout",async(req,res)=>{
     }
   } catch (error) {
     res.status(500).json("Internal Server Error")
+  }
+})
+
+userRouter.patch("/update/:id",async(req,res)=>{
+  const {id}= req.params;
+  try {
+if(id){
+  let user = await UserModel.findByIdAndUpdate(id,req.body);
+  res.status(200).json({"msg":"Profile has been updated",user})
+}
+    
+  } catch (error) {
+    res.status(500).json({"msg":"internal Server Error"});
   }
 })
 
