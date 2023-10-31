@@ -63,34 +63,34 @@ userRouter.post("/login",async(req,res)=>{
   }
 })
 
-// userRouter.get("/logout",async(req,res)=>{
-//   let accessToken=req.cookies.token;
-//   let resToken = req.cookies.refreshToken;
-//   try {
-//     if(accessToken && resToken){
-//    let block = new BlockListModel({token:accessToken,refreshToken:resToken});
-//    await block.save();
-//    res.status(200).json({"msg":"Logout Successfully, Visit again!"});
-//    res.clearCookie();
-//     }else{
-//       res.status(400).json({"msg":"Token and refreshToken not exist"})
-//     }
-//   } catch (error) {
-//     res.status(500).json("Internal Server Error")
-//   }
-// })
+userRouter.get("/logout",async(req,res)=>{
+  let accessToken=req.cookies.token;
+  let resToken = req.cookies.refreshToken;
+  try {
+    if(accessToken && resToken){
+   let block = new BlockListModel({token:accessToken,refreshToken:resToken});
+   await block.save();
+   res.status(200).json({"msg":"Logout Successfully, Visit again!"});
+   res.clearCookie();
+    }else{
+      res.status(400).json({"msg":"Token and refreshToken not exist"})
+    }
+  } catch (error) {
+    res.status(500).json("Internal Server Error")
+  }
+})
 
-// userRouter.patch("/update/:id",async(req,res)=>{
-//   const {id}= req.params;
-//   try {
-// if(id){
-//   let user = await UserModel.findByIdAndUpdate(id,req.body);
-//   res.status(200).json({"msg":"Profile has been updated",user})
-// }
+userRouter.patch("/update/:id",async(req,res)=>{
+  const {id}= req.params;
+  try {
+if(id){
+  let user = await UserModel.findByIdAndUpdate(id,req.body);
+  res.status(200).json({"msg":"Profile has been updated",user})
+}
     
-//   } catch (error) {
-//     res.status(500).json({"msg":"internal Server Error"});
-//   }
-// })
+  } catch (error) {
+    res.status(500).json({"msg":"internal Server Error"});
+  }
+})
 
 module.exports = { userRouter };
