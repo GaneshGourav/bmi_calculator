@@ -1,11 +1,11 @@
 const express = require("express");
 require("dotenv").config();
 const { connection } = require("./db");
-const {userRouter} = require('./router/userRouter')
+const { userRouter } = require("./router/userRouter");
 
 const app = express();
-app.use(express.json())
-app.use("/users",userRouter)
+app.use(express.json());
+app.use("/users", userRouter);
 
 app.get("/", async (req, res) => {
   try {
@@ -14,7 +14,6 @@ app.get("/", async (req, res) => {
     res.json("inernal server error!");
   }
 });
-
 
 app.listen(4000, async () => {
   try {

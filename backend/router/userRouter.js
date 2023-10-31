@@ -6,8 +6,15 @@ const jwt = require("jsonwebtoken")
 
 const userRouter = express.Router();
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post("/signup", async (req, res) => {
   const { username, email, password } = req.body;
+  const passwordReq =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+if (!passwordReq.test(password)) {
+  return res.status(200).json({
+    msg: "Invalid password format! Password format Should contain atleast one uppercase character, one number, special character and length greater then 8.",
+  });
+}
 
   try {
     const user = await UserModel.findOne({ email });
@@ -20,7 +27,7 @@ userRouter.post("/register", async (req, res) => {
           await newUser.save();
           res
             .status(200)
-            .json({ msg: "You are successfully ceated your Account",newUser });
+            .json({ msg: "You're successfully created your Account",newUser });
         }
       });
     } else {
