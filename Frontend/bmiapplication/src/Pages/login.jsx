@@ -1,6 +1,10 @@
+import { Container } from "@chakra-ui/react"
+
 export const Login = ()=>{
     return <>
-
-    <h1> Login </h1>
+<Container>
+    
+</Container>
+    
     </>
 }
