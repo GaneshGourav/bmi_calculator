@@ -40,6 +40,7 @@ export const Navbar = () => {
           </NavLink>
         ))}
       </div>
+      <hr />
     </>
   );
 };
