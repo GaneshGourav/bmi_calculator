@@ -3,6 +3,7 @@ import { Home } from "../Pages/Home"
 import { Bmicalculation } from "../Pages/BmiCalculation"
 import { BmiHistory } from "../Pages/BmiHistory"
 import { Login } from "../Pages/login"
+import { Signup } from "../Pages/Signup"
 export const AllRoutes = () =>{
    
 
@@ -13,6 +14,7 @@ export const AllRoutes = () =>{
 <Route path="/bmi_Calculate" element={<Bmicalculation/>} />
 <Route path="/bmi_History" element={<BmiHistory/>} />
 <Route path="/login" element={<Login/>} />
+<Route path="/signup" element={<Signup/>} />
 
     </Routes>
     </>
