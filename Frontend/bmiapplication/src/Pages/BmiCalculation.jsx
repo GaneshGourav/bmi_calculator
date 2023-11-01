@@ -3,7 +3,7 @@ import { Button, Container, FormControl, FormLabel, Input, Text } from "@chakra-
 export const Bmicalculation = ()=>{
     return <>
     <Container>
-<Text color={"teal"} fontFamily={'cursive'} fontWeight={"800"}>Calculate your Body Mass Index and stay healthy</Text>
+<Text color={"teal"} fontFamily={'cursive'} fontWeight={"800"}>Calculate your Body Mass Index and stay healthy</Text> <br />
 <Container>
     <form action="">
         <FormControl isRequired>
