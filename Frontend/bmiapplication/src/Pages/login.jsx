@@ -1,4 +1,5 @@
 import { Button, Container, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 export const Login = ()=>{
     return <>
@@ -19,7 +20,8 @@ export const Login = ()=>{
 </FormControl> <br /><br />
 <Button width={'100%'} colorScheme="pink">Login</Button>
 
-        </form>
+        </form> <br /><br />
+        <Text fontFamily={'cursive'}>if you visit first Time, <span style={{color:"teal"}} fontWeight="800"><Link to="/signup">SignUp here!</Link></span></Text>
     </Container> <br /><br />
 </Container>
     
