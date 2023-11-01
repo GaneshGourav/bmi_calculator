@@ -1,8 +1,19 @@
 import { Button, Container, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
+import { useState } from "react";
 import { Link } from "react-router-dom"
 
 
 export const Signup = () => {
+    const [name,setName] = useState("")
+    const [email,setEmail] = useState("")
+    const [password,setPassword]=useState("")
+    const handleSignup=(e)=>{
+        e.preventDefault();
+        let userDetails ={
+            name,email,password
+        }
+console.log(userDetails)
+    }
   return (
     <>
       <Container padding={"30px"}>
@@ -16,24 +27,24 @@ export const Signup = () => {
           padding={"30px"}
           borderRadius={"5px"}
         >
-          <form action="">
+          <form onSubmit={handleSignup}>
           <FormControl isRequired>
               <FormLabel>Name</FormLabel>
-              <Input type="text" placeholder="Your name" />
+              <Input type="text" placeholder="Your name" onChange={(e)=>setName(e.target.value)} />
             </FormControl>{" "} <br />
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
-              <Input type="email" placeholder="Enter email" />
+              <Input type="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)} />
             </FormControl>{" "}
             <br />
             <FormControl isRequired>
               <FormLabel>Password</FormLabel>
 
-              <Input type="password" placeholder="password" />
+              <Input type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)} />
             </FormControl>{" "}
             <br />
             <br />
-            <Button width={"100%"} colorScheme="pink">
+            <Button type="submit" width={"100%"} colorScheme="pink">
              SignUp
             </Button>
           </form>{" "}
