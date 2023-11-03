@@ -5,7 +5,7 @@ export const userSignup=(user)=>(dispatch)=>{
     dispatch({type:SIGNUP_PENDING})
     axios.post('http://localhost:4000/users/signup',user)
     .then((res)=>{
-        // dispatch({type:SIGNUP_SUCCESS,payload:res.data})
+        dispatch({type:SIGNUP_SUCCESS,payload:res.data})
         console.log(res.data)
       })
       .catch((err)=>{
