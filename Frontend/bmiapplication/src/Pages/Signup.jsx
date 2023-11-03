@@ -12,27 +12,22 @@ import { userSignup } from "../Redux/Action";
 import { SIGNUP_ERROR,  SIGNUP_SUCCESS } from "../Redux/ActionType";
 
 export const Signup = () => {
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const isAuth = useSelector((store)=>store.authenication.isAuth);
-  const isLoading = useSelector((store)=>store.authenication.isLoading);
+  // const isAuth = useSelector((store)=>store.authenication.isAuth);
+  // const isLoading = useSelector((store)=>store.authenication.isLoading);
   const handleSignup = (e) => {
     e.preventDefault();
     let userDetails = {
-      name,
+      username,
       email,
       password,
     };
     console.log(userDetails);
-dispatch(userSignup(userDetails).then((res)=>{
-  dispatch({type:SIGNUP_SUCCESS,payload:res.data})
-}).catch((err)=>{
-  dispatch({type:SIGNUP_ERROR})
-})
+dispatch(userSignup(userDetails))
 
-)
   };
   return (
     <>

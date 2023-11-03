@@ -7,11 +7,16 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { userLogin } from "../Redux/Action";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const isAuth = useSelector((store)=>store.authenication.isAuth )
+  const isLoading = useSelector((store)=>store.authenication.isLoading )
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,6 +25,9 @@ export const Login = () => {
       password,
     };
     console.log(logiDetails);
+    dispatch(userLogin(logiDetails).then((res)=>{
+      
+    }))
   };
   return (
     <>
