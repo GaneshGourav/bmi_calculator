@@ -9,7 +9,7 @@ export const userSignup=(user)=>(dispatch)=>{
         console.log(res.data)
       })
       .catch((err)=>{
-        // dispatch({type:SIGNUP_ERROR})
+        dispatch({type:SIGNUP_ERROR})
       })
       
 }
