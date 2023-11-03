@@ -1,19 +1,39 @@
-import { Button, Container, FormControl, FormLabel, Input, Text } from "@chakra-ui/react"
+import {
+  Button,
+  Container,
+  FormControl,
+  FormLabel,
+  Input,
+  Text,
+} from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom"
-
+import { useDispatch, useSelector } from "react-redux";
+import { userSignup } from "../Redux/Action";
+import { SIGNUP_PENDING, SIGNUP_SUCCESS } from "../Redux/ActionType";
 
 export const Signup = () => {
-    const [name,setName] = useState("")
-    const [email,setEmail] = useState("")
-    const [password,setPassword]=useState("")
-    const handleSignup=(e)=>{
-        e.preventDefault();
-        let userDetails ={
-            name,email,password
-        }
-console.log(userDetails)
-    }
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const isAuth = useSelector((store)=>store.authenication.isAuth);
+  const isLoading = useSelector((store)=>store.authenication.isLoading);
+  const handleSignup = (e) => {
+    e.preventDefault();
+    let userDetails = {
+      name,
+      email,
+      password,
+    };
+    console.log(userDetails);
+dispatch(userSignup(userDetails).then((res)=>{
+  dispatch({type:SIGNUP_SUCCESS,payload:res.data})
+}).catch((err)=>{
+  dispatch({type:SIGNUP_PENDING})
+})
+
+)
+  };
   return (
     <>
       <Container padding={"30px"}>
@@ -28,29 +48,41 @@ console.log(userDetails)
           borderRadius={"5px"}
         >
           <form onSubmit={handleSignup}>
-          <FormControl isRequired>
+            <FormControl isRequired>
               <FormLabel>Name</FormLabel>
-              <Input type="text" placeholder="Your name" onChange={(e)=>setName(e.target.value)} />
-            </FormControl>{" "} <br />
+              <Input
+                type="text"
+                placeholder="Your name"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </FormControl>{" "}
+            <br />
             <FormControl isRequired>
               <FormLabel>Email</FormLabel>
-              <Input type="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)} />
+              <Input
+                type="email"
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </FormControl>{" "}
             <br />
             <FormControl isRequired>
               <FormLabel>Password</FormLabel>
 
-              <Input type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)} />
+              <Input
+                type="password"
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </FormControl>{" "}
             <br />
             <br />
             <Button type="submit" width={"100%"} colorScheme="pink">
-             SignUp
+              SignUp
             </Button>
           </form>{" "}
           <br />
           <br />
-         
         </Container>{" "}
         <br />
         <br />
