@@ -25,9 +25,7 @@ export const Login = () => {
       password,
     };
     console.log(logiDetails);
-    dispatch(userLogin(logiDetails).then((res)=>{
-      
-    }))
+    dispatch(userLogin(logiDetails))
   };
   return (
     <>
