@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignup } from "../Redux/Action";
-import { SIGNUP_PENDING, SIGNUP_SUCCESS } from "../Redux/ActionType";
+import { SIGNUP_ERROR,  SIGNUP_SUCCESS } from "../Redux/ActionType";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -29,7 +29,7 @@ export const Signup = () => {
 dispatch(userSignup(userDetails).then((res)=>{
   dispatch({type:SIGNUP_SUCCESS,payload:res.data})
 }).catch((err)=>{
-  dispatch({type:SIGNUP_PENDING})
+  dispatch({type:SIGNUP_ERROR})
 })
 
 )
