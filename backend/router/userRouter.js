@@ -12,7 +12,7 @@ userRouter.post("/signup", async (req, res) => {
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 if (!passwordReq.test(password)) {
   return res.status(200).json({
-    msg: "Invalid password format! Password format Should contain atleast one uppercase character, one number, special character and length greater then 8.",
+    err: "Invalid password format! Password format Should contain atleast one uppercase character, one number, special character and length greater then 8.",
   });
 }
 
@@ -49,7 +49,7 @@ userRouter.post("/login",async(req,res)=>{
           let refreshToken = jwt.sign({id:"calculator"},"calculator",{expiresIn:"5m"});
           res.cookie("token",token);
           res.cookie("resfreshToken",refreshToken);
-          res.status(200).json({"msg":"Login Succesfull",token,refreshToken})
+          res.status(200).json({"msg":"Login Succesfull","token":token,refreshToken})
         }else{
           res.status(400).json({"msg":"Wrong Crendential"})
         }
