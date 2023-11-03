@@ -10,12 +10,14 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignup } from "../Redux/Action";
 import { SIGNUP_ERROR,  SIGNUP_SUCCESS } from "../Redux/ActionType";
+import { useToast } from '@chakra-ui/react'
 
 export const Signup = () => {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const toast = useToast()
   // const isAuth = useSelector((store)=>store.authenication.isAuth);
   // const isLoading = useSelector((store)=>store.authenication.isLoading);
   const handleSignup = (e) => {
@@ -26,7 +28,38 @@ export const Signup = () => {
       password,
     };
     console.log(userDetails);
-dispatch(userSignup(userDetails))
+dispatch(userSignup(userDetails)).then((res)=>{
+  dispatch({type:SIGNUP_SUCCESS,payload:res.data})
+  if(res.data.msg){
+    toast({
+      title: 'Invalid password format',
+      description:`${res.data.msg}`,
+      status: 'error',
+      duration: 4000,
+      isClosable: true,
+    })
+  }else{
+    toast({
+      title: 'Account created ',
+      description:"We've created your account for you.",
+      status: 'success',
+      duration: 4000,
+      isClosable: true,
+    })
+  }
+  
+})
+.catch((err)=>{
+  dispatch({type:SIGNUP_ERROR})
+  console.log(err.response.data.msg)
+  toast({
+    title: 'Already registered ',
+    description:`${err.response.data.msg}`,
+    status: 'success',
+    duration: 4000,
+    isClosable: true,
+  })
+})
 
   };
   return (
