@@ -50,6 +50,7 @@ dispatch(userSignup(userDetails)).then((res)=>{
       duration: 4000,
       isClosable: true,
     })
+    navigate("/login")
   }
   
 })
@@ -110,11 +111,15 @@ dispatch(userSignup(userDetails)).then((res)=>{
             </FormControl>{" "}
             <br />
             <br />
-            <Button type="submit" width={"100%"} colorScheme="pink">
-              {
-                isLoading?"Signing":"SignUp"
-              }
-            </Button>
+           {isLoading?<Button
+    isLoading
+    loadingText='Loading'
+    colorScheme='teal'
+    
+    spinnerPlacement='start'
+    width={"100%"}
+  />:<Button type="submit" width={"100%"} colorScheme="pink"> SignUp
+            </Button>}
           </form>{" "}
           <br />
           <br />
