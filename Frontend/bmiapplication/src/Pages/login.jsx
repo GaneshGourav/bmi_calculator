@@ -5,6 +5,7 @@ import {
   FormLabel,
   Input,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +20,8 @@ export const Login = () => {
   const navigate=useNavigate()
   const dispatch = useDispatch();
   const isAuth = useSelector((store)=>store.authenication.isAuth )
-  const isLoading = useSelector((store)=>store.authenication.isLoading )
+  const isLoading = useSelector((store)=>store.authenication.isLoading );
+  const toast=useToast();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -30,7 +32,18 @@ export const Login = () => {
     console.log(logiDetails);
     dispatch(userLogin(logiDetails)).then((res)=>{
       dispatch({type:LOGIN_SUCCESS,payload:res.data})
-      console.log(res.data)
+      toast({
+        title: 'Authorizsed',
+        description:`${res.data.msg}`,
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+      })
+      if(location.state===null){
+        navigate('/',{replace:true})
+      }else{
+        navigate(location.state,{replace:true})
+      }
     }).catch((err)=>{
       dispatch({type:LOGIN_ERROR})
     })
