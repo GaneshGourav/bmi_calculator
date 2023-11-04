@@ -22,7 +22,7 @@ export const Signup = () => {
   const dispatch = useDispatch();
   const toast = useToast()
   // const isAuth = useSelector((store)=>store.authenication.isAuth);
-  // const isLoading = useSelector((store)=>store.authenication.isLoading);
+  const isLoading = useSelector((store)=>store.authenication.isLoading);
   const handleSignup = (e) => {
     e.preventDefault();
     let userDetails = {
@@ -111,7 +111,9 @@ dispatch(userSignup(userDetails)).then((res)=>{
             <br />
             <br />
             <Button type="submit" width={"100%"} colorScheme="pink">
-              SignUp
+              {
+                isLoading?"Signing":"SignUp"
+              }
             </Button>
           </form>{" "}
           <br />
