@@ -45,11 +45,11 @@ userRouter.post("/login",async(req,res)=>{
     if(user){
       bcrypt.compare(password,user.password,async(err,result)=>{
         if(result){
-          let token = jwt.sign({id:"bmi"},"bmi",{expiresIn:"1m"});
+          let token = jwt.sign({userId:user._id,username:user.username, expiresIn:"1m"},"bmiapplication");
           let refreshToken = jwt.sign({id:"calculator"},"calculator",{expiresIn:"5m"});
           res.cookie("token",token);
           res.cookie("resfreshToken",refreshToken);
-          res.status(200).json({"msg":"Login Succesfull","token":token,refreshToken})
+          res.status(200).json({"msg":"Login Succesfull","token":token,refreshToken,userId:user._id})
         }else{
           res.status(400).json({"msg":"Wrong Crendential"})
         }
