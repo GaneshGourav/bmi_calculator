@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { userLogin } from "../Redux/Action";
 import { LOGIN_ERROR, LOGIN_SUCCESS } from "../Redux/ActionType";
 
@@ -46,8 +46,17 @@ export const Login = () => {
       }
     }).catch((err)=>{
       dispatch({type:LOGIN_ERROR})
+      toast({
+        title: `${err.response.data.msg}`,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
     })
   };
+  if(isAuth){
+    return <Navigate to="/" replace={true}/>
+  }
   return (
     <>
       <Container padding={"30px"}>

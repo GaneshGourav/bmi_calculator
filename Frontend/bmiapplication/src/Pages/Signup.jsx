@@ -9,20 +9,19 @@ import {
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSignup } from "../Redux/Action";
-import { SIGNUP_ERROR,  SIGNUP_SUCCESS } from "../Redux/ActionType";
-import { useToast } from '@chakra-ui/react'
-import { useNavigate } from "react-router-dom";
-
+import { SIGNUP_ERROR, SIGNUP_SUCCESS } from "../Redux/ActionType";
+import { useToast } from "@chakra-ui/react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const toast = useToast()
-  // const isAuth = useSelector((store)=>store.authenication.isAuth);
-  const isLoading = useSelector((store)=>store.authenication.isLoading);
+  const toast = useToast();
+  const isAuth = useSelector((store) => store.authenication.isAuth);
+  const isLoading = useSelector((store) => store.authenication.isLoading);
   const handleSignup = (e) => {
     e.preventDefault();
     let userDetails = {
@@ -31,43 +30,45 @@ export const Signup = () => {
       password,
     };
     console.log(userDetails);
-dispatch(userSignup(userDetails)).then((res)=>{
-  dispatch({type:SIGNUP_SUCCESS,payload:res.data})
-  console.log(res.data.err)
-  if(res.data.err){
-    toast({
-      title: 'Invalid password format',
-      description:`${res.data.err}`,
-      status: 'error',
-      duration: 4000,
-      isClosable: true,
-    })
-  }else if(res.data.msg){
-    toast({
-      title: 'Account created ',
-      description:`${res.data.msg}`,
-      status: 'success',
-      duration: 4000,
-      isClosable: true,
-    })
-    navigate("/login")
-  }
-  
-})
-.catch((err)=>{
-  dispatch({type:SIGNUP_ERROR})
-  console.log(err.response.data.msg)
-  toast({
-    title: 'Already registered ',
-    description:`${err.response.data.msg}`,
-    status: 'success',
-    duration: 4000,
-    isClosable: true,
-  })
-  navigate("/login")
-})
-
+    dispatch(userSignup(userDetails))
+      .then((res) => {
+        dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
+        console.log(res.data.err);
+        if (res.data.err) {
+          toast({
+            title: "Invalid password format",
+            description: `${res.data.err}`,
+            status: "error",
+            duration: 4000,
+            isClosable: true,
+          });
+        } else if (res.data.msg) {
+          toast({
+            title: "Account created ",
+            description: `${res.data.msg}`,
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          });
+          navigate("/login");
+        }
+      })
+      .catch((err) => {
+        dispatch({ type: SIGNUP_ERROR });
+        console.log(err.response.data.msg);
+        toast({
+          title: "Already registered ",
+          description: `${err.response.data.msg}`,
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
+        navigate("/login");
+      });
   };
+  if (isAuth) {
+    return <Navigate to="/" replace={true} />;
+  }
   return (
     <>
       <Container padding={"30px"}>
@@ -111,15 +112,20 @@ dispatch(userSignup(userDetails)).then((res)=>{
             </FormControl>{" "}
             <br />
             <br />
-           {isLoading?<Button
-    isLoading
-    loadingText='Loading'
-    colorScheme='teal'
-    
-    spinnerPlacement='start'
-    width={"100%"}
-  />:<Button type="submit" width={"100%"} colorScheme="pink"> SignUp
-            </Button>}
+            {isLoading ? (
+              <Button
+                isLoading
+                loadingText="Loading"
+                colorScheme="teal"
+                spinnerPlacement="start"
+                width={"100%"}
+              />
+            ) : (
+              <Button type="submit" width={"100%"} colorScheme="pink">
+                {" "}
+                SignUp
+              </Button>
+            )}
           </form>{" "}
           <br />
           <br />
