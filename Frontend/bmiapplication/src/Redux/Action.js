@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { LOGIN_PENDING, SIGNUP_PENDING, SIGNUP_SUCCESS } from './ActionType'
+import { LOGIN_PENDING, SIGNUP_PENDING } from './ActionType'
 
 export const userSignup=(user)=>(dispatch)=>{
     dispatch({type:SIGNUP_PENDING})
