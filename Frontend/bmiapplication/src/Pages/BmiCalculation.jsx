@@ -6,24 +6,32 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export const Bmicalculation = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [bmimes, setbmimes] = useState(null)
+ 
   const handleCalculateBmi = (e) => {
     e.preventDefault();
     const bmi = weight / (height * height);
     if (bmi <= 18.5) {
-      console.log("UnderWeight", bmi);
+      setbmimes(`Your BMI is ${bmi},underWeight`);
     } else if (bmi >= 18.5 && bmi <= 24.9) {
-      console.log("Normal Weight", bmi);
+      setbmimes(`Your BMI is ${bmi},normal Weight`)
     } else if (bmi >= 25 && bmi <= 29.9) {
-      console.log("Over Weight", bmi);
+      setbmimes(`Your BMI is ${bmi},over weight`);
     } else if (bmi > 30) {
-      console.log("Obesity", bmi);
+      setbmimes(`Your BMI is ${bmi},obesity`);
     }
   };
+  console.log(bmimes)
+
+   
+ 
+
+
   const handleClearfield = (e) => {
     e.target.reset();
   };
@@ -34,6 +42,7 @@ export const Bmicalculation = () => {
           Calculate your Body Mass Index and stay healthy
         </Text>{" "}
         <br />
+        
         <Container>
           <form onSubmit={handleCalculateBmi}>
             <FormControl isRequired>
@@ -69,6 +78,8 @@ export const Bmicalculation = () => {
             </Button>
           </form>
         </Container>
+       
+       
       </Container>
       <br />
     </>
