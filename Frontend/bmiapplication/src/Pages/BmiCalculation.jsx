@@ -26,7 +26,7 @@ export const Bmicalculation = () => {
       setbmimes(`Your BMI is ${bmi},obesity`);
     }
   };
-  console.log(bmimes)
+
 
    
  
