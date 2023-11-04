@@ -1,12 +1,14 @@
 import { Heading, Text } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
+  const isAuth = useSelector((store) => store.authenication.isAuth);
   const link = [
     { to: "/", title: "Home" },
     { to: "/bmi_Calculate", title: "YourBMI" },
     { to: "/bmi_History", title: "History" },
-    { to: "/login", title: "Login" },
+    // { to: "/login", title: "Login" },
   ];
 
   return (
@@ -39,6 +41,7 @@ export const Navbar = () => {
             {el.title}
           </NavLink>
         ))}
+       {isAuth ? <NavLink to="/logout">Logout</NavLink >:<NavLink to="/login" >Login</NavLink>}
       </div>
       <hr />
     </>
