@@ -8,12 +8,15 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLogin } from "../Redux/Action";
+import { LOGIN_ERROR, LOGIN_SUCCESS } from "../Redux/ActionType";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const location=useLocation();
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const isAuth = useSelector((store)=>store.authenication.isAuth )
   const isLoading = useSelector((store)=>store.authenication.isLoading )
@@ -25,7 +28,12 @@ export const Login = () => {
       password,
     };
     console.log(logiDetails);
-    dispatch(userLogin(logiDetails))
+    dispatch(userLogin(logiDetails)).then((res)=>{
+      dispatch({type:LOGIN_SUCCESS,payload:res.data})
+      console.log(res.data)
+    }).catch((err)=>{
+      dispatch({type:LOGIN_ERROR})
+    })
   };
   return (
     <>
