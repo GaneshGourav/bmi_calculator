@@ -37,7 +37,7 @@ export const Bmicalculation = () => {
     }).catch((err)=>{
       console.log(err)
     })
-    console.log(bmimes)
+   
   };
   
 
