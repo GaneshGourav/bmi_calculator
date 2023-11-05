@@ -1,4 +1,7 @@
 import {
+  BMI_ERROR,
+  BMI_PENDING,
+  BMI_SUCCESS,
   LOGIN_ERROR,
   LOGIN_PENDING,
   LOGIN_SUCCESS,
@@ -14,6 +17,8 @@ let initialState = {
   isError: false,
   token: "",
   userId: "",
+  bmi:""
+
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -42,6 +47,15 @@ export const authReducer = (state = initialState, { type, payload }) => {
     }
     case SIGNUP_ERROR: {
       return { ...state, isLoading: false, isError: true };
+    }
+    case BMI_PENDING:{
+      return {...state,isLoading:true,isError:false}
+    }
+    case BMI_SUCCESS:{
+      return {...state,isLoading:false,bmi:payload.newData,isError:false}
+    }
+    case BMI_ERROR:{
+      return {...state,isLoading:false,isError:false}
     }
     default :return state
   }

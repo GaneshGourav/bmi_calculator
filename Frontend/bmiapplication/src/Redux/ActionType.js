@@ -6,3 +6,7 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 export const SIGNUP_PENDING = "SIGNUP_PENDING";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
+
+export const BMI_PENDING = "BMI_PENDING"
+export const BMI_SUCCESS="BMI_SUCCESS"
+export const BMI_ERROR="BMI_ERROR"

@@ -7,11 +7,17 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { bmipost } from "../Redux/Action";
+import { BMI_SUCCESS } from "../Redux/ActionType";
 
 export const Bmicalculation = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [bmimes, setbmimes] = useState(null)
+  const [bmimes, setbmimes] = useState(null);
+  
+  const isLoading = useSelector((store) => store.authenication.isLoading);
+  const dispatch = useDispatch();
  
   const handleCalculateBmi = (e) => {
     e.preventDefault();
@@ -25,7 +31,15 @@ export const Bmicalculation = () => {
     } else if (bmi > 30) {
       setbmimes(`Your BMI is ${bmi},obesity`);
     }
+    dispatch(bmipost(bmi)).then((res)=>{
+      dispatch({type:BMI_SUCCESS,payload:res.data})
+      console.log(res.data)
+    }).catch((err)=>{
+      console.log(err)
+    })
+    console.log(bmimes)
   };
+  
 
 
    
