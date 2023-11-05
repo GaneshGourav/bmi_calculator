@@ -45,7 +45,7 @@ userRouter.post("/login",async(req,res)=>{
     if(user){
       bcrypt.compare(password,user.password,async(err,result)=>{
         if(result){
-          let token = jwt.sign({userId:user._id,username:user.username, expiresIn:"1m"},"bmiapplication");
+          let token = jwt.sign({userID:user._id,username:user.username, expiresIn:"1m"},"bmiapplication");
           let refreshToken = jwt.sign({id:"calculator"},"calculator",{expiresIn:"5m"});
           res.cookie("token",token);
           res.cookie("resfreshToken",refreshToken);
