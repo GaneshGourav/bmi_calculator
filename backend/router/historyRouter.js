@@ -3,7 +3,7 @@ const {HistoryModel} = require('../model/historyModel')
 
 const historyRouter = express.Router();
 
-historyRouter.post("/data",async(req,res)=>{
+historyRouter.post("/add",async(req,res)=>{
     const {data }= req.body;
     try {
         const newData = new HistoryModel({data});
