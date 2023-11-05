@@ -43,7 +43,7 @@ export const Bmicalculation = () => {
         </Text>{" "}
         <br />
         
-        <Container>
+       { bmimes? `${bmimes}`:<Container>
           <form onSubmit={handleCalculateBmi}>
             <FormControl isRequired>
               <FormLabel>Height</FormLabel>
@@ -77,7 +77,7 @@ export const Bmicalculation = () => {
               Clear
             </Button>
           </form>
-        </Container>
+        </Container>}
        
        
       </Container>

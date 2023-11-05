@@ -13,9 +13,9 @@ export const AllRoutes = () => {
         <Route
           path="/bmi_Calculate"
           element={
-            <PrivateRoutes>
+            // <PrivateRoutes>
               <Bmicalculation />
-            </PrivateRoutes>
+            // </PrivateRoutes>
           }
         />
         <Route path="/bmi_History" element={<BmiHistory />} />
