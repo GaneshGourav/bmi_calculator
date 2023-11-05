@@ -52,7 +52,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
       return {...state,isLoading:true,isError:false}
     }
     case BMI_SUCCESS:{
-      return {...state,isLoading:false,bmi:payload.newData,isError:false}
+      return {...state,isLoading:false,bmi:payload.data,isError:false}
     }
     case BMI_ERROR:{
       return {...state,isLoading:false,isError:false}
