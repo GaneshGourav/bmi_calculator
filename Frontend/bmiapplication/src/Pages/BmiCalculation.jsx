@@ -35,7 +35,7 @@ export const Bmicalculation = () => {
       dispatch({type:BMI_SUCCESS,payload:res.data})
       console.log(res.data)
     }).catch((err)=>{
-      console.log(err)
+     
     })
    
   };
