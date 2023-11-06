@@ -79,7 +79,7 @@ export const Bmicalculation = () => {
             </FormControl>{" "}
             <br />
             <Button type="submit" width="100%" colorScheme="pink">
-              Calculate your BMI
+             {isLoading?"calculating":"Calculate your BMI"}
             </Button>{" "}
             <br />
             <br />
