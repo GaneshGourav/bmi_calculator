@@ -47,7 +47,8 @@ export const Bmicalculation = () => {
 
 
   const handleClearfield = (e) => {
-  
+  setHeight("");
+  setWeight("")
   };
   return (
     <>
