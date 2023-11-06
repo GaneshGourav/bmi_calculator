@@ -1,6 +1,10 @@
+import { Container } from "@chakra-ui/react"
+
 export const BmiHistory = ()=>{
     return <>
-
-    <h1> History </h1>
+<Container>
+    
+</Container>
+    
     </>
 }
