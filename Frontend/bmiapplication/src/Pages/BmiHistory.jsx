@@ -12,7 +12,7 @@ import {
 export const BmiHistory = () => {
   return (
     <>
-      <Container>
+      <Container marginBottom={"25%"}>
         <TableContainer>
           <Table variant="striped" colorScheme="teal">
             <TableCaption>Body Mass Index measured history </TableCaption>
