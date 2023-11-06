@@ -47,7 +47,7 @@ export const Bmicalculation = () => {
 
 
   const handleClearfield = (e) => {
-    e.target.reset();
+  
   };
   return (
     <>
