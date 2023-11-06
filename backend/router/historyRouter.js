@@ -4,9 +4,9 @@ const {HistoryModel} = require('../model/historyModel')
 const historyRouter = express.Router();
 
 historyRouter.post("/add",async(req,res)=>{
-    const {data }= req.body;
+    const data = req.body;
     try {
-        const newData = new HistoryModel({data});
+        const newData = new HistoryModel(data);
         newData.save();
         res.status(200).json({"msg":"Data added to the server",newData});
     } catch (error) {
