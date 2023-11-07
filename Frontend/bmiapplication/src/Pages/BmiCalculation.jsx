@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bmipost } from "../Redux/Action";
 import { BMI_SUCCESS } from "../Redux/ActionType";
-import {useNavigate} from "react-router-dom"
+
 
 export const Bmicalculation = () => {
   const [height, setHeight] = useState("");
