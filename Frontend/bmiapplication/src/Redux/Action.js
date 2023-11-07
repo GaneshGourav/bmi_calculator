@@ -23,3 +23,8 @@ export const bmipost = (data)=>(dispatch)=>{
     dispatch({type:BMI_PENDING})
     return axios.post('http://localhost:4000/historys/add',data)
 }
+
+export const bmihistory = ()=>(dispatch)=>{
+    dispatch({type:BMI_PENDING})
+    return axios.get('http://localhost:4000/historys')
+}
