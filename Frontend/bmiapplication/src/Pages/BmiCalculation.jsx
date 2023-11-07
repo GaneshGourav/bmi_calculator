@@ -108,7 +108,8 @@ export const Bmicalculation = () => {
         </Flex>
        
       </Container>
-      <br />
+      <br /><br />
+  
     </>
   );
 };
