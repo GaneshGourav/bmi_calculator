@@ -8,10 +8,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bmipost } from "../Redux/Action";
 import { BMI_SUCCESS } from "../Redux/ActionType";
+import {useNavigate} from "react-router-dom"
 
 export const Bmicalculation = () => {
   const [height, setHeight] = useState("");
@@ -20,6 +21,7 @@ export const Bmicalculation = () => {
   
   const isLoading = useSelector((store) => store.authenication.isLoading);
   const dispatch = useDispatch();
+  
  
   const handleCalculateBmi = (e) => {
     e.preventDefault();
@@ -41,6 +43,10 @@ export const Bmicalculation = () => {
     })
    
   };
+
+  const handleBack=()=>{
+    setbmimes(null)
+  }
   
 
 
@@ -59,9 +65,10 @@ export const Bmicalculation = () => {
           Calculate your Body Mass Index and stay healthy
         </Text>{" "}
         <br />
-       <Flex border={'1px solid red'} width={"100%"}>
-       { bmimes? <Container border={"1px solid red"} height={"360px"} display={"flex"} justifyContent={'center'} alignItems={'center'} color={'teal'} fontFamily={'cursive'} fontWeight={800}>
-       { bmimes}
+       <Flex  width={"100%"}>
+       { bmimes? <Container border={"1px solid teal"} height={"360px"} display={"flex"} justifyContent={'center'} alignItems={'center'} color={'teal'} fontFamily={'cursive'} fontWeight={800} borderRadius={"5px"} flexDirection={'column'}>
+       { bmimes} <br /><br />
+       <Button onClick={handleBack} width={'60%'} colorScheme="teal">Go to Back</Button>
        </Container>:<Container  border={"1px solid blue"}>
           <form onSubmit={handleCalculateBmi}>
             <FormControl isRequired>
