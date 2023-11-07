@@ -1,11 +1,13 @@
 import {
   Button,
   Container,
+  Flex,
   FormControl,
   FormLabel,
   Input,
   Text,
 } from "@chakra-ui/react";
+
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bmipost } from "../Redux/Action";
@@ -57,8 +59,10 @@ export const Bmicalculation = () => {
           Calculate your Body Mass Index and stay healthy
         </Text>{" "}
         <br />
-        
-       { bmimes? `${bmimes}`:<Container>
+       <Flex border={'1px solid red'} width={"100%"}>
+       { bmimes? <Container border={"1px solid red"} height={"360px"} display={"flex"} justifyContent={'center'} alignItems={'center'} color={'teal'} fontFamily={'cursive'} fontWeight={800}>
+       { bmimes}
+       </Container>:<Container  border={"1px solid blue"}>
           <form onSubmit={handleCalculateBmi}>
             <FormControl isRequired>
               <FormLabel>Height</FormLabel>
@@ -93,7 +97,8 @@ export const Bmicalculation = () => {
             </Button>
           </form>
         </Container>}
-       
+        
+        </Flex>
        
       </Container>
       <br />
