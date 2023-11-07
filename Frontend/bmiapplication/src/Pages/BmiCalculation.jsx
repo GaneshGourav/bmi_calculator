@@ -69,7 +69,7 @@ export const Bmicalculation = () => {
        { bmimes? <Container border={"1px solid teal"} height={"360px"} display={"flex"} justifyContent={'center'} alignItems={'center'} color={'teal'} fontFamily={'cursive'} fontWeight={800} borderRadius={"5px"} flexDirection={'column'}>
        { bmimes} <br /><br />
        <Button onClick={handleBack} width={'60%'} colorScheme="teal">Go to Back</Button>
-       </Container>:<Container  border={"1px solid blue"}>
+       </Container>:<Container  >
           <form onSubmit={handleCalculateBmi}>
             <FormControl isRequired>
               <FormLabel>Height</FormLabel>
