@@ -8,8 +8,11 @@ import {
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const BmiHistory = () => {
+  const isLoading = useSelector((store) => store.authenication.isLoading);
+  const dispatch = useDispatch();
   return (
     <>
       <Container marginBottom={"25%"}>
