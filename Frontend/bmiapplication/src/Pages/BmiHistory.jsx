@@ -8,11 +8,18 @@ import {
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { bmihistory } from "../Redux/Action";
 
 export const BmiHistory = () => {
   const isLoading = useSelector((store) => store.authenication.isLoading);
   const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(bmihistory()).then((res)=>{
+      console.log(res)
+    })
+  })
   return (
     <>
       <Container marginBottom={"25%"}>
