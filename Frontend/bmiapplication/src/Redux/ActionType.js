@@ -10,3 +10,5 @@ export const SIGNUP_ERROR = "SIGNUP_ERROR";
 export const BMI_PENDING = "BMI_PENDING"
 export const BMI_SUCCESS="BMI_SUCCESS"
 export const BMI_ERROR="BMI_ERROR"
+
+export const BMI_HISTORY="BMI_HISTORY"
