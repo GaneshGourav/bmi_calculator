@@ -18,7 +18,7 @@ export const BmiHistory = () => {
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(bmihistory()).then((res)=>{
-      
+      dispatch({type:BMI_HISTORY_SUCCESS})
       console.log(res)
     })
   })
