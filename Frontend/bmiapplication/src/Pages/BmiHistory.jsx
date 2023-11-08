@@ -14,7 +14,7 @@ import { bmihistory } from "../Redux/Action";
 import { BMI_HISTORY_SUCCESS } from "../Redux/ActionType";
 
 export const BmiHistory = () => {
-  const isLoading = useSelector((store) => store.authenication.isLoading);
+  // const isLoading = useSelector((store) => store.authenication.isLoading);
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(bmihistory()).then((res)=>{
