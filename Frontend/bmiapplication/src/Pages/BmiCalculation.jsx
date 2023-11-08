@@ -36,7 +36,7 @@ export const Bmicalculation = () => {
       setbmimes(`Your BMI is ${bmi},obesity`);
     }
     dispatch(bmipost()).then((res)=>{
-      dispatch({type:BMI_SUCCESS,payload:res.data})
+      dispatch({type:BMI_SUCCESS})
       console.log(res.data)
     }).catch((err)=>{
       console.log(err)
