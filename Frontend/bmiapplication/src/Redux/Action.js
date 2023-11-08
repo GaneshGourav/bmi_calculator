@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { BMI_PENDING, LOGIN_PENDING, SIGNUP_PENDING } from './ActionType'
+import { BMI_HISTORY_PENDING, BMI_PENDING, LOGIN_PENDING, SIGNUP_PENDING } from './ActionType'
 
 export const userSignup=(user)=>(dispatch)=>{
     dispatch({type:SIGNUP_PENDING})
@@ -18,6 +18,6 @@ export const bmipost = (data)=>(dispatch)=>{
 }
 
 export const bmihistory = ()=>(dispatch)=>{
-    dispatch({type:BMI_PENDING})
+    dispatch({type:BMI_HISTORY_PENDING})
     return axios.get('http://localhost:4000/historys')
 }
