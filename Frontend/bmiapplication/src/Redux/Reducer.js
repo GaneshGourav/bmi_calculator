@@ -1,6 +1,7 @@
 import {
   BMI_ERROR,
   BMI_HISTORY,
+  BMI_HISTORY_SUCCESS,
   BMI_PENDING,
   BMI_SUCCESS,
   LOGIN_ERROR,
@@ -59,7 +60,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
       return {...state,isLoading:false,isError:false}
     }
 
-    case BMI_HISTORY:{
+    case BMI_HISTORY_SUCCESS:{
       return {...state,isLoading:true,isError:false}
     }
     default :return state
