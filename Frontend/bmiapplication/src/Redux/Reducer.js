@@ -61,7 +61,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
     }
 
     case BMI_HISTORY_SUCCESS:{
-      return {...state,isLoading:true,isError:false}
+      return {...state,isLoading:false,isError:false}
     }
     default :return state
   }
