@@ -35,7 +35,7 @@ export const Bmicalculation = () => {
     } else if (bmi > 30) {
       setbmimes(`Your BMI is ${bmi},obesity`);
     }
-    dispatch(bmipost(bmi)).then((res)=>{
+    dispatch(bmipost()).then((res)=>{
       dispatch({type:BMI_SUCCESS,payload:res.data})
       console.log(res.data)
     }).catch((err)=>{
