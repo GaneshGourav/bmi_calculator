@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import { BMI_HISTORY_PENDING, BMI_PENDING, LOGIN_PENDING, SIGNUP_PENDING } from './ActionType'
+import { BMI_HISTORY_PENDING, BMI_PENDING, LOGIN_PENDING, SIGNUP_PENDING } from './ActionType'
 
 export const userSignup=(user)=>(dispatch)=>{
     dispatch({type:SIGNUP_PENDING})
