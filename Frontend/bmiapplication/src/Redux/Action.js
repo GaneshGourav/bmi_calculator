@@ -7,10 +7,10 @@ export const userSignup=(user)=>(dispatch)=>{
       
 }
 
-export const userLogin=(data)=>(dispatch)=>{
-    dispatch({type:LOGIN_PENDING})
-    return axios.post('http://localhost:4000/users/login',data)
-}
+// export const userLogin=(data)=>(dispatch)=>{
+//     dispatch({type:LOGIN_PENDING})
+//     return axios.post('http://localhost:4000/users/login',data)
+// }
 
 export const bmipost = (data)=>(dispatch)=>{
     dispatch({type:BMI_PENDING})
