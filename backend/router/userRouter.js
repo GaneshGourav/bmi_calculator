@@ -80,17 +80,17 @@ userRouter.get("/logout",async(req,res)=>{
   }
 })
 
-userRouter.patch("/update/:id",async(req,res)=>{
-  const {id}= req.params;
-  try {
-if(id){
-  let user = await UserModel.findByIdAndUpdate(id,req.body);
-  res.status(200).json({"msg":"Profile has been updated",user})
-}
+// userRouter.patch("/update/:id",async(req,res)=>{
+//   const {id}= req.params;
+//   try {
+// if(id){
+//   let user = await UserModel.findByIdAndUpdate(id,req.body);
+//   res.status(200).json({"msg":"Profile has been updated",user})
+// }
     
-  } catch (error) {
-    res.status(500).json({"msg":"internal Server Error"});
-  }
-})
+//   } catch (error) {
+//     res.status(500).json({"msg":"internal Server Error"});
+//   }
+// })
 
 module.exports = { userRouter };
