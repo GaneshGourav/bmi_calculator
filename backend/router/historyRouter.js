@@ -14,14 +14,14 @@ historyRouter.post("/add",async(req,res)=>{
     }
 })
 
-historyRouter.get("/",async(req,res)=>{
-    try {
-        const data = await HistoryModel.find()
-        res.status(200).json({"msg":"data got successfully",data})
+// historyRouter.get("/",async(req,res)=>{
+//     try {
+//         const data = await HistoryModel.find()
+//         res.status(200).json({"msg":"data got successfully",data})
 
-    } catch (error) {
-        res.status(500).json("Internal server Error")
-    }
-})
+//     } catch (error) {
+//         res.status(500).json("Internal server Error")
+//     }
+// })
 
 module.exports={historyRouter};
